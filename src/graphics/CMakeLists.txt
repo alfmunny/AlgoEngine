@@ -1,0 +1,7 @@
+add_library(
+    window
+    window.cpp
+    window.h
+    )
+
+
