@@ -1,7 +1,13 @@
-add_library(
-    window
-    window.cpp
-    window.h
+file(GLOB graphics_src
+    "*h"
+    "*hpp"
+    "*cpp"
+    "models/*"
+    "shapes/*"
+    "diagrams/*"
     )
 
-
+add_library(
+    graphics
+    ${graphics_src}
+    )

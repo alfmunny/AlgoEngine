@@ -9,5 +9,3 @@ conan_basic_setup()
 
 add_executable(main main.cpp)
 add_subdirectory(src)
-
-target_link_libraries(main PUBLIC ${CONAN_LIBS} algo)

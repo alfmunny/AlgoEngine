@@ -27,7 +27,7 @@ namespace algo {
       glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
       glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-      mWindow= glfwCreateWindow(800, 600, "AlgoEngie", NULL, NULL);
+      mWindow= glfwCreateWindow(mWidth, mHeight, mName, NULL, NULL);
       glfwMakeContextCurrent(mWindow);
       glfwSetFramebufferSizeCallback(mWindow, framebuffer_size_callback);
 
