@@ -62,11 +62,11 @@ namespace algo {
   {
     if (currentFrame >= playback.size()) currentFrame = playback.size() - 1;
     std::vector<float> frame = playback[currentFrame];
-    std::vector<graphics::Square*> bars;
     for (int i = 0; i < frame.size(); ++i)
     {
       renderer.push((graphics::Square*) new graphics::Bar(-5.0f + (float)i * 0.1f + 0.5, frame[i], frame[i], shader));
     }
+    std::cout << playback.size() << ", " << currentFrame << std::endl;
     renderer.flush();
   }
 }

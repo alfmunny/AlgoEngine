@@ -55,7 +55,12 @@ int main() {
       deltaTime = 0;
     }
 
-    qs.render();
+    //for (int i = 0; i < input.size(); ++i)
+    //{
+      //renderer.push((Square*) new Bar(-5.0f + (float)i * 0.1f + 0.5, input[i], input[i], shader));
+    //}
+    //renderer.flush();
+    //qs.render();
     window.update();
   }
 

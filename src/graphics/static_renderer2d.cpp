@@ -21,6 +21,7 @@ namespace algo { namespace graphics {
       square->getVAO()->unbind();
       square->getIBO()->unbind();
       renderQ.pop_front();
+      delete square;
     }
   }
 
