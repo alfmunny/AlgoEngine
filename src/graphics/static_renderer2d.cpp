@@ -1,16 +1,23 @@
 #include "static_renderer2d.h"
-#include "models/square.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace algo { namespace graphics {
-  void StaticRenderer2D::push(const Square* square)
-  {
+
+  StaticRenderer2D::StaticRenderer2D() {
+
+  }
+
+  StaticRenderer2D::StaticRenderer2D(Graph& graph) 
+    : renderQ(graph.GetRenderables()) {
+
+  }
+
+  void StaticRenderer2D::push(const Square* square) {
     renderQ.push_back(square);
   }
 
-  void StaticRenderer2D::flush() 
-  {
+  void StaticRenderer2D::flush() {
     while(!renderQ.empty())
     {
       const Square* square = renderQ.front();
@@ -21,7 +28,6 @@ namespace algo { namespace graphics {
       square->getVAO()->unbind();
       square->getIBO()->unbind();
       renderQ.pop_front();
-      delete square;
     }
   }
 

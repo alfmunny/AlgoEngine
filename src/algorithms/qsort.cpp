@@ -2,16 +2,12 @@
 #include <thread>
 #include <chrono>
 
-namespace algo {
-  QuickSort::QuickSort(std::vector<float>& input, graphics::Shader& shader)
-    : input(input), shader(shader)
+namespace algo { namespace algorithms {
+
+  QuickSort::QuickSort(std::vector<float>& input, const graphics::Shader& shader)
+    : Renderable(input, shader)
   {
-    timer = glfwGetTime();
-    lastTime = timer;
-    deltaTime = 0;
-    playback.push_back(input);
-    currentFrame = 0;
-  };
+  }
 
   int QuickSort::parition(int lo, int hi) 
   {
@@ -29,10 +25,10 @@ namespace algo {
   }
 
   void QuickSort::exch(int i, int j) {
-      float tmp = input[i]; 
-      input[i] = input[j]; 
-      input[j] = tmp;
-      playback.push_back(input);
+    float tmp = input[i]; 
+    input[i] = input[j]; 
+    input[j] = tmp;
+    AddFrame();
   }
 
   void QuickSort::sort(int lo, int hi)
@@ -43,31 +39,17 @@ namespace algo {
     sort(j+1, hi);
   }
 
-  void QuickSort::sort()
-  {
+  void QuickSort::sort() {
     playback.clear();
     playback.push_back(input);
     sort(0, input.size()-1);
   }
 
-  void QuickSort::update() 
-  {
-    if (currentFrame < playback.size())
-    {
-      currentFrame++;
-    }
+  void QuickSort::Perform() {
+    sort();
   }
 
-  void QuickSort::render()
-  {
-    if (currentFrame >= playback.size()) currentFrame = playback.size() - 1;
-    std::vector<float> frame = playback[currentFrame];
-    for (int i = 0; i < frame.size(); ++i)
-    {
-      renderer.push((graphics::Square*) new graphics::Bar(-5.0f + (float)i * 0.1f + 0.5, frame[i], frame[i], shader));
-    }
-    std::cout << playback.size() << ", " << currentFrame << std::endl;
-    renderer.flush();
-  }
-}
+  QuickSort::~QuickSort() {
 
+  }
+} }

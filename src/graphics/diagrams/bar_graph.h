@@ -1,15 +1,12 @@
 #pragma once
-#include <shapes/bar.h>
+#include "graph.h"
 
 namespace algo { namespace graphics {
-  class BarGraph
-  {
+  class BarGraph : public Graph {
     private:
-      std::vector<Square*> Q;
       const Shader& shader;
     public:
-      BarGraph(float* input, int size, const Shader& shader);
+      BarGraph(std::vector<float>& input, const Shader& shader);
       ~BarGraph();
-      inline const std::vector<Square*> getObj() { return Q; };
   };
 }}

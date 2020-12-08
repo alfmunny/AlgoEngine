@@ -33,9 +33,11 @@ int main() {
     input.push_back(h);
   }
 
-  QuickSort qs(input, shader);
-  qs.sort();
+  algorithms::QuickSort qs(input, shader);
+  algorithms::Renderable* qsr = &qs; 
 
+  qsr->Perform();
+  
   StaticRenderer2D renderer;
 
   double now = glfwGetTime(), lastTime = now;
@@ -51,11 +53,11 @@ int main() {
     lastTime = now;
     if (deltaTime >= 0.1) 
     {
-      qs.update();
       deltaTime = 0;
     }
 
-    qs.render();
+    qsr->ForwardFrame();
+    qsr->Render();
     window.update();
   }
 
