@@ -8,3 +8,4 @@
 #include "models/square.h"
 #include "shapes/bar.h"
 #include "diagrams/bar_graph.h"
+#include "diagrams/grid.h"

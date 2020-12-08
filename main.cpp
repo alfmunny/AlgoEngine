@@ -38,7 +38,8 @@ int main() {
 
   qsr->Perform();
   
-  StaticRenderer2D renderer;
+  Grid g(1, 1, shader);
+  StaticRenderer2D renderer(g);
 
   double now = glfwGetTime(), lastTime = now;
   double deltaTime = 0;
@@ -56,8 +57,11 @@ int main() {
       deltaTime = 0;
     }
 
-    qsr->ForwardFrame();
-    qsr->Render();
+    //qsr->ForwardFrame();
+    //qsr->Render();
+    for (auto x : g.GetRenderables())
+      renderer.push(x);
+    renderer.flush();
     window.update();
   }
 
