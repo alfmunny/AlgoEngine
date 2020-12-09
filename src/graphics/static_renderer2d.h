@@ -1,7 +1,6 @@
 #pragma once
 #include "renderer2d.h"
 #include <deque>
-#include <diagrams/graph.h>
 
 namespace algo { namespace graphics {
   class StaticRenderer2D : public Renderer2D {
@@ -9,8 +8,8 @@ namespace algo { namespace graphics {
       std::deque<const Square*> renderQ;
     public:
       StaticRenderer2D();
-      StaticRenderer2D(Graph& graph);
       void push(const Square* square) override;
+      void copy(const std::deque<const Square*> renderables) override;
       void flush() override;
   };
 } }

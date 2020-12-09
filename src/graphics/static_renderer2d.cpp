@@ -8,13 +8,12 @@ namespace algo { namespace graphics {
 
   }
 
-  StaticRenderer2D::StaticRenderer2D(Graph& graph) 
-    : renderQ(graph.GetRenderables()) {
-
-  }
-
   void StaticRenderer2D::push(const Square* square) {
     renderQ.push_back(square);
+  }
+
+  void StaticRenderer2D::copy(const std::deque<const Square*> renderables) {
+     renderQ = renderables;
   }
 
   void StaticRenderer2D::flush() {

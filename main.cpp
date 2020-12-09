@@ -38,8 +38,7 @@ int main() {
 
   qsr->Perform();
   
-  Grid g(1, 1, shader);
-  StaticRenderer2D renderer(g);
+  Grid grid(1, 1, shader);
 
   double now = glfwGetTime(), lastTime = now;
   double deltaTime = 0;
@@ -52,16 +51,13 @@ int main() {
     now = glfwGetTime();
     deltaTime += now - lastTime;
     lastTime = now;
-    if (deltaTime >= 0.1) 
-    {
-      deltaTime = 0;
+    if (deltaTime >= 0.1) {
+      qsr->RenderPlayBack<BarGraph>();
     }
-
-    //qsr->ForwardFrame();
-    //qsr->Render();
-    for (auto x : g.GetRenderables())
-      renderer.push(x);
-    renderer.flush();
+    else {
+    }
+    
+    //grid.Render();
     window.update();
   }
 

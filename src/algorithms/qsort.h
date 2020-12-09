@@ -3,7 +3,6 @@
 #include <renderable.h>
 
 namespace algo { namespace algorithms {
-
   class QuickSort : public Renderable
   {
     private:
@@ -12,8 +11,10 @@ namespace algo { namespace algorithms {
       void exch(int i, int j);
       void sort();
     public:
-      QuickSort(std::vector<float>& input, const graphics::Shader& shader);
-      ~QuickSort();
-      void Perform() override;
+      QuickSort(std::vector<float>& input, const graphics::Shader& shader) 
+        : Renderable(input, shader) {
+      }
+      ~QuickSort() {};
+      void Perform() override { sort(); };
   } ;
 } }
