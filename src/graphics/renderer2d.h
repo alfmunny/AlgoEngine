@@ -1,5 +1,6 @@
 #pragma once
 #include "models/square.h"
+#include <deque>
 
 namespace algo { namespace graphics {
   class Renderer2D
